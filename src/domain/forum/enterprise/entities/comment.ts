@@ -4,13 +4,12 @@ import { Optional } from '@/core/types/optional'
 
 export interface CommentProps {
     authorId: UniqueEntityID
-    answerId: UniqueEntityID
     content: string
     createdAt: Date
     updatedAt?: Date
 }
 
-export abstract class Comment<Props extends CommentProps> extends Entity<CommentProps> {
+export abstract class Comment<Props extends CommentProps> extends Entity<Props> {
 
     get authorId() {
         return this.props.authorId
