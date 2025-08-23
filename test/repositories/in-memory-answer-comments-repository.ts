@@ -20,7 +20,6 @@ export class InMemoryAnswerCommentsRepository implements AnswerCommentsRepositor
 
     }
 
-
     async delete(answerComment: AnswerComment): Promise<void> {
 
         const itemIndex = this.items.findIndex(item => item.id === answerComment.id)

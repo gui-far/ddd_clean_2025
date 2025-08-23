@@ -4,6 +4,8 @@ import { Question } from "@/domain/forum/enterprise/entities/question"
 
 export class InMemoryQuestionsRepository implements QuestionRepository {
 
+    public items: Question[] = []
+
     async findById(id: string): Promise<Question | null> {
 
         const question = this.items.find(item => item.id.toString() === id)
@@ -13,8 +15,6 @@ export class InMemoryQuestionsRepository implements QuestionRepository {
         return question
 
     }
-
-    public items: Question[] = []
 
     async findBySlug(slug: string) {
         const question = this.items.find(item => item.slug.value === slug)

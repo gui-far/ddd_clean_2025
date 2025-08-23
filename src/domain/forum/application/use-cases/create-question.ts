@@ -1,6 +1,7 @@
 import { UniqueEntityID } from '@/core/entities/unique-entity-id';
 import { QuestionRepository } from '../repositories/questions-repository';
 import { Question } from '../../enterprise/entities/question';
+import { Entity } from '@/core/entities/entity';
 
 interface CreateQuestionUseCaseRequest {
   authorId: string
@@ -27,7 +28,7 @@ export class CreateQuestionUseCase {
       title,
       content
     });
-
+    
     await this.questionsRepository.create(question);
 
     return { question };

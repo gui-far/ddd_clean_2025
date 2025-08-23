@@ -1,12 +1,6 @@
 import { expect, test, describe, beforeEach, it } from 'vitest'
-import { QuestionRepository } from '../repositories/questions-repository'
-import { Question } from '../../enterprise/entities/question'
 import { AnswerQuestionUseCase } from './answer-question'
 import { InMemoryAnswersRepository } from 'test/repositories/in-memory-answers-repository'
-
-const fakeQuestionsRepository: QuestionRepository = {
-    create: async (question: Question) => { },
-}
 
 let inMemoryAnswersRepository: InMemoryAnswersRepository
 let sut: AnswerQuestionUseCase //sut = SYSTEM UNDER TEST

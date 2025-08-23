@@ -1,6 +1,4 @@
 import { expect, describe, beforeEach, it } from 'vitest'
-import { QuestionRepository } from '../repositories/questions-repository'
-import { Question } from '../../enterprise/entities/question'
 import { CreateQuestionUseCase } from './create-question'
 import { InMemoryQuestionsRepository } from 'test/repositories/in-memory-questions-repository'
 
