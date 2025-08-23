@@ -1,14 +1,17 @@
 import { UniqueEntityID } from '@/core/entities/unique-entity-id';
 import { QuestionRepository } from '../repositories/questions-repository';
 import { Question } from '../../enterprise/entities/question';
+import { Either, right } from '@/core/either';
 
 interface FetchRecentQuestionBySlugUseCaseRequest {
     page: number
 }
 
-interface FetchRecentQuestionBySlugUseCaseResponse {
+/* interface FetchRecentQuestionBySlugUseCaseResponse {
     questions: Question[]
-}
+} */
+
+type FetchRecentQuestionBySlugUseCaseResponse = Either<null, { questions: Question[] }>
 
 export class FetchRecentQuestionBySlugUseCase {
 
@@ -18,9 +21,9 @@ export class FetchRecentQuestionBySlugUseCase {
         page
     }: FetchRecentQuestionBySlugUseCaseRequest): Promise<FetchRecentQuestionBySlugUseCaseResponse> {
 
-        const questions = await this.questionsRepository.findManyRecent({page});
+        const questions = await this.questionsRepository.findManyRecent({ page });
 
-        return { questions };
+        return right({ questions });
 
     }
 }
