@@ -5,14 +5,17 @@ import { makeQuestion } from 'test/factories/make-question'
 import { Slug } from '../../enterprise/entities/value-objects/slug'
 import { Q } from 'node_modules/@faker-js/faker/dist/airline-CLphikKp.cjs'
 import { FetchRecentQuestionBySlugUseCase } from './fetch-recent-questions'
+import { InMemoryQuestionAttachmentsRepository } from 'test/repositories/in-memory-question-attachments-repository'
 
+let inMemoryQuestionAttachmentsRepository: InMemoryQuestionAttachmentsRepository
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository
 let sut: FetchRecentQuestionBySlugUseCase //sut = SYSTEM UNDER TEST
 
 describe('Fetch Recent Questions', () => {
 
     beforeEach(() => {
-        inMemoryQuestionsRepository = new InMemoryQuestionsRepository()
+        inMemoryQuestionAttachmentsRepository = new InMemoryQuestionAttachmentsRepository()
+        inMemoryQuestionsRepository = new InMemoryQuestionsRepository(inMemoryQuestionAttachmentsRepository)
         sut = new FetchRecentQuestionBySlugUseCase(inMemoryQuestionsRepository)
     })
 
