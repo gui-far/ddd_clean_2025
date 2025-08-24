@@ -31,8 +31,6 @@ export class CreateQuestionUseCase {
     attachmentsIds
   }: CreateQuestionUseCaseRequest): Promise<CreateQuestionUseCaseResponse> {
 
-    
-
     const question = Question.create({
       authorId: new UniqueEntityID(authorId),
       title,
