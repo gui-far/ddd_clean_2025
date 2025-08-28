@@ -1,8 +1,8 @@
 import { Either, left, right } from '@/core/either';
 import { Question } from '../../enterprise/entities/question';
 import { QuestionRepository } from '../repositories/questions-repository';
-import { ResourceNotFoundError } from './errors/resource-not-found-error';
-import { NotAllowedError } from './errors/not-allowed-error';
+import { ResourceNotFoundError } from '../../../../core/errors/errors/resource-not-found-error';
+import { NotAllowedError } from '../../../../core/errors/errors/not-allowed-error';
 import { QuestionAttachmentsRepository } from '../repositories/question-attachments-repository';
 import { QuestionAttachmentList } from '../../enterprise/entities/question-attachment-list';
 import { QuestionAttachment } from '../../enterprise/entities/question-attachment';
@@ -46,9 +46,9 @@ export class EditQuestionUseCase {
 
         const currentQuestionAttachments = await this.questionAttachmentsRepository.findManyByQuestionId(questionId)
 
-        const questionAttachmentsList = new QuestionAttachmentList(currentQuestionAttachments)
+        const questionAttachmentsList = new QuestionAttachmentList(currentQuestionAttachments) //1,2,3
 
-        const questionAttachments = attachmentsIds.map(attachmentId => {
+        const questionAttachments = attachmentsIds.map(attachmentId => {//1,3,5
             return QuestionAttachment.create({
                 attachmentId: new UniqueEntityID(attachmentId),
                 questionId: question.id
